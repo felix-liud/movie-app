@@ -42,21 +42,26 @@ class MovieService extends Service {
   }
 
   async getByStatus(params) {
-    const { page, pageSize, status } = params;
+    const { page, pageSize, status = 1 } = params;
     const [{ 'COUNT(*)': count }] = await this.app.mysql.query(`SELECT COUNT(*) from movie where isPlay = '${status}'`);
+    if (page < 1) {
+      return { total: count, list: [], page, pageSize }
+    }
     const movies = await this.selectByCondition({
       where: { isPlay: status },
       orders: [['rate','desc']],
       limit: +pageSize, 
-      offset: +page * pageSize,
+      offset: (page - 1) * pageSize,
     })
-    return { total: count, list: movies }
+    return { total: count, list: movies, page, pageSize }
   }
 
   async getRank() {
+    // 播放量最多的前十个电影
+    const limit = 10;
     const movies = await this.selectByCondition({
       orders: [['viewCount','desc']],
-      limit: 10, 
+      limit, 
     })
     return movies;
   }

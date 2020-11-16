@@ -1,3 +1,14 @@
+/*
+ * @Author: liudong
+ * @Date: 2020-11-11 10:04:41
+ * @version: 模块版本
+ * @Description: 必要描述
+ * @FilePath: \movie-api\app\service\user.js
+ * @param: {Object} [title] - 参数说明
+ * @method: [FunctionName] - 方法说明
+ * @LastEditors: liudong
+ * @LastEditTime: 2020-11-16 16:25:58
+ */
 const Service = require('egg').Service;
 const bcrypt = require('bcryptjs')
 
@@ -20,6 +31,7 @@ class UserService extends Service {
       where: { email }
     })
     const { password: encryptPass } = result[0];
+    console.log('result: ', result[0]);
     if (this.comparePassword(password, encryptPass)) {
       return result[0];
     }

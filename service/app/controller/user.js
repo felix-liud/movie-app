@@ -1,3 +1,14 @@
+/*
+ * @Author: liudong
+ * @Date: 2020-08-20 15:27:00
+ * @version: 模块版本
+ * @Description: 必要描述
+ * @FilePath: \movie-api\app\controller\user.js
+ * @param: {Object} [title] - 参数说明
+ * @method: [FunctionName] - 方法说明
+ * @LastEditors: liudong
+ * @LastEditTime: 2020-11-16 16:27:39
+ */
 'use strict';
 
 const Controller = require('egg').Controller;
@@ -20,7 +31,7 @@ class UserController extends Controller {
     }
     const bool = await service.user.checkEmail(email)
     if (bool) {
-      ctx.sendError('邮箱已经被注册')
+      ctx.sendError('邮箱已经被注册');
       return
     }
     

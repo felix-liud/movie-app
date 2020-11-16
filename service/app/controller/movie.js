@@ -23,7 +23,7 @@ class MovieController extends Controller {
   // 获取不同状态的电影列表
   async getByStatus() {
     const { ctx, service } = this;
-    const params = { page: 0, pageSize: 10, ...ctx.query };
+    const params = { page: 1, pageSize: 10, ...ctx.query };
     const result = await service.movie.getByStatus(params);
     ctx.sendSuccess(result)
   }

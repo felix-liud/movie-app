@@ -22,7 +22,7 @@ module.exports = appInfo => {
       // username
       user: 'root',
       // password
-      password: '549888',
+      password: 'root',
       // database
       database: 'movie_trailer',    
     },

@@ -1,4 +1,7 @@
-import path from 'path';
+// 导入别名
+const pathAliasMap = {
+  '@/': '/src/',
+}
 
 export default {
   cssPreprocessOptions: {
@@ -8,13 +11,22 @@ export default {
       }
     }
   },
-  // 导入别名
-  alias: {
-    '/@/': path.resolve(__dirname, './src'),
-    '/@view/': path.resolve(__dirname, './src/views'),
-    '/@components/': path.resolve(__dirname, './src/components'),
-    '/@utils/': path.resolve(__dirname, './src/utils'),
-  },
+  // 此方式无效
+  // alias: {
+  //   '@/': path.resolve(__dirname, './src'),
+  // },
+  resolvers: [
+    {
+      alias(path) {
+        for (const [slug, res] of Object.entries(pathAliasMap)) {
+          if (path.startsWith(slug)) {
+            return path.replace(slug, res)
+          }
+        }
+      },
+    },
+  ],
+
   proxy: {
     // string shorthand
     '/foo': 'http://localhost:4567/foo',

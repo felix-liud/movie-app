@@ -1,0 +1,55 @@
+// ---------------------------------色彩---------------------------------
+$color-golden: #ffb400;
+$color-danger: #f13900;
+$color-blue: #1e7dd7;
+$color-white: #ffffff;
+$color-theme: #1c2635;
+$color-background: #F5F7FA;
+
+// ---------------------------------文字---------------------------------
+$font-size-extra-large: 25px;
+$font-size-large: 20px;
+$font-size-medium: 17px;
+$font-size-base: 15px;
+$font-size-small: 13px;
+$font-size-extra-small: 12px;
+
+$color-text-primary: #303133;
+$color-text-regular: #606266;
+$color-text-secondary: #909399;
+$color-text-lighter: #C0C4CC;
+
+// ---------------------------------边框---------------------------------
+$border-color-base: #DCDFE6;
+$border-color-golden: $color-golden;
+$border-radius-base: .04rem;
+$border-radius-small: .02rem;
+$bordered: .01rem solid $border-color-base;
+
+// ---------------------------------其他---------------------------------
+$headerHeight: .56rem;
+
+// ---------------------------------mixin--------------------------------
+
+@mixin page-fixed($top: 0) {
+  position: fixed;
+  top: $top;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+@mixin layout-flex($a: normal, $b: normal) {
+  display: flex;
+  align-items: $a;
+  justify-content: $b;
+  flex-wrap: wrap;
+}
+  
+@mixin text-ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

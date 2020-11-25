@@ -2,23 +2,44 @@
  * @Author: liudong
  * @Date: 2020-11-20 17:37:03
  * @version: 模块版本
- * @Description: 必要描述
+ * @Description: html
  * @FilePath: \movie-api\client-vue3\index.html
- * @param: {Object} [title] - 参数说明
- * @method: [FunctionName] - 方法说明
  * @LastEditors: liudong
- * @LastEditTime: 2020-11-20 17:42:47
+ * @LastEditTime: 2020-11-25 16:34:30
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
+
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vite App</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Vite Movie App</title>
 </head>
+
 <body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
+    <div id="app"></div>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                setRootFontSize = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        // html根元素大小   100设计稿的html大小  750是假设的设计稿大小 看你的设计稿来修改
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRootFontSize, false);
+            doc.addEventListener('DOMContentLoaded', setRootFontSize, false);
+        })(document, window);
+    </script>
+    <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>

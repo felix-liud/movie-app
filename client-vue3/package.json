@@ -2,8 +2,9 @@
   "name": "client-vue3",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "cross-env NODE_ENV=pre vite",
+    "build": "cross-env NODE_ENV=production vite build",
+    "build:pre": "cross-env NODE_ENV=pre vite build"
   },
   "dependencies": {
     "vue": "^3.0.2",
@@ -12,13 +13,13 @@
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.2",
+    "cross-env": "^7.0.2",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^7.1.0",
-    "less": "^3.12.2",
-    "less-loader": "^7.1.0",
     "prettier": "^2.2.0",
+    "sass": "^1.29.0",
     "vite": "^1.0.0-rc.8"
   }
 }

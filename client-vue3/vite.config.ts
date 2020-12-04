@@ -3,9 +3,9 @@
  * @Date: 2020-11-23 09:31:10
  * @version: vite配置文件
  * @Description: 文件描述
- * @FilePath: \movie-api\client-vue3\vite.config.ts
+ * @FilePath: \movie-app\client-vue3\vite.config.ts
  * @LastEditors: liudong
- * @LastEditTime: 2020-11-25 16:16:57
+ * @LastEditTime: 2020-12-04 17:54:29
  */
 const path = require('path');
 const rf = require("fs");
@@ -19,6 +19,11 @@ export default {
     }
 
   },
+  // 引入第三方的配置
+  optimizeDeps: {
+    include: ["axios"]
+  },
+
   // outputDir: 在npm run build 或 yarn build 时 ，生成文件的目录名称（要和baseUrl的生产环境路径一致）
   outputDir: "dist",
   //用于放置生成的静态资源 (js、css、img、fonts) 的；（项目打包之后，静态资源会放在这个文件夹下）

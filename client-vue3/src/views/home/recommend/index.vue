@@ -4,7 +4,7 @@
  * @Description: 头部组件
  * @FilePath: \movie-app\client-vue3\src\views\home\recommend\index.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-04 16:44:22
+ * @LastEditTime: 2020-12-04 17:44:07
 -->
 <template>
   <div class="main">
@@ -12,11 +12,15 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import request from '/@/utils/request.ts';
+import { defineComponent, onMounted, reactive } from 'vue';
 export default defineComponent({
   name: 'Recommend',
   setup() {
-    
+    onMounted(() => {
+      
+      console.log('request: ', request);
+    })
     return {
       
     };

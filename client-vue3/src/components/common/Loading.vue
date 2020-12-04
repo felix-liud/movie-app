@@ -3,13 +3,12 @@
  * @Date: 2020-11-23 14:22:32
  * @version: 模块版本
  * @Description: loading加载组件
- * @FilePath: \movie-api\client-vue3\src\components\common\Loading.vue
+ * @FilePath: \movie-app\client-vue3\src\components\common\Loading.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-11-25 16:05:58
+ * @LastEditTime: 2020-11-26 14:57:47
 -->
 <template>
   <div class="loading-wrap" :style="{ height: height }">
-    asdfasf
     <div class="spinner">
       <div class="rect rect1" />
       <div class="rect rect2" />
@@ -20,8 +19,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "Loading",
   props: {
     height: {
@@ -29,7 +30,7 @@ export default {
       default: "100%"
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 .loading-wrap{

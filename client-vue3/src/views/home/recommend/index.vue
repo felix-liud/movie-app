@@ -3,8 +3,8 @@
  * @Date: 2020-12-04 14:24:05
  * @Description: 头部组件
  * @FilePath: \movie-app\client-vue3\src\views\home\recommend\index.vue
- * @LastEditors: liudong
- * @LastEditTime: 2020-12-04 17:44:07
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-12-06 18:10:04
 -->
 <template>
   <div class="main">
@@ -14,12 +14,24 @@
 <script lang="ts">
 import request from '/@/utils/request.ts';
 import { defineComponent, onMounted, reactive } from 'vue';
+import { mapActions, useStore } from 'vuex';
+type ActionType = 'requestHostList';
+
 export default defineComponent({
   name: 'Recommend',
+  methods: {
+    ...mapActions({
+      requestHostList: 'requestHostList'
+    })
+  },
+  created() {
+    // this.requestHostList();
+  },
   setup() {
+    const { dispatch } = useStore();
     onMounted(() => {
+      dispatch('requestHostList');
       
-      console.log('request: ', request);
     })
     return {
       

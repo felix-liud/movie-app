@@ -5,7 +5,7 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\src\router\index.ts
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-04 16:42:59
+ * @LastEditTime: 2020-12-30 17:49:05
  */
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 
@@ -25,6 +25,11 @@ const routes: RouteRecordRaw[] = [
         path: '/category',
         name: 'Category',
         component: () => import ('/@/views/home/category/index.vue'),
+      },
+      {
+        path: '/movie/:id',
+        name: 'MovieDetail',
+        component: () => import ('/@/views/movie-detail/index.vue'),
       },
       {
         path: '/rank',

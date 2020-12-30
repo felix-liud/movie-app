@@ -1,45 +1,63 @@
 <!--
  * @Author: liudong
  * @Date: 2020-12-04 14:24:05
- * @Description: 头部组件
+ * @Description: 推荐/首页
  * @FilePath: \movie-app\client-vue3\src\views\home\recommend\index.vue
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-06 18:10:04
+ * @LastEditors: liudong
+ * @LastEditTime: 2020-12-30 18:00:51
 -->
 <template>
   <div class="main">
-    推荐
+    <div class="title">
+      <h3>正在热映（{{ playing.count }}）</h3>
+      <router-link to="/search" class="iconfont icon-xiangyou more"></router-link>
+    </div>
+    <ColumnList :list="playing.movies"/>
+    <div class="title">
+      <h3>即将热映（{{ comming.count }}）</h3>
+      <router-link to="/search" class="iconfont icon-xiangyou"></router-link>
+    </div>
+    <ColumnList :list="comming.movies"/>
   </div>
 </template>
 <script lang="ts">
-import request from '/@/utils/request.ts';
-import { defineComponent, onMounted, reactive } from 'vue';
+import { computed, defineComponent, onMounted, reactive, toRefs, watch, watchEffect } from 'vue';
 import { mapActions, useStore } from 'vuex';
-type ActionType = 'requestHostList';
+import { StateType } from '/@/utils/store/modules/recommend';
+import { MovieObjType } from '../../../store/modules/recommend';
+import ColumnList from '/@/components/common/ColumnList.vue';
+type ActionType = 'recommend/requestHostList';
 
 export default defineComponent({
   name: 'Recommend',
-  methods: {
-    ...mapActions({
-      requestHostList: 'requestHostList'
-    })
-  },
-  created() {
-    // this.requestHostList();
+  components: {
+    ColumnList
   },
   setup() {
-    const { dispatch } = useStore();
-    onMounted(() => {
-      dispatch('requestHostList');
-      
-    })
+    const { dispatch, state } = useStore();
+    let playing = computed<MovieObjType>(() => state.recommend.playing);
+    let comming = computed(() => state.recommend.comming);
+    onMounted(async () => {
+      await dispatch('recommend/requestHostList');
+    });
     return {
-      
+      playing,
+      comming
     };
   }
 });
 </script>
 
 <style lang="scss">
-
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 2px;
+  font-size: 18px;
+  font-weight: bold;
+  color: $color-theme;
+  .more {
+    width: 20px;
+  }
+}
 </style>

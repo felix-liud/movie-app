@@ -5,7 +5,7 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\vite.config.ts
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-04 17:54:29
+ * @LastEditTime: 2020-12-07 09:15:00
  */
 const path = require('path');
 const rf = require("fs");
@@ -44,9 +44,8 @@ export default {
     '/foo': 'http://localhost:4567/foo',
     // with options
     '/api': {
-      target: 'http://jsonplaceholder.typicode.com',
+      target: 'http://localhost:7001',
       changeOrigin: true,
-      rewrite: (path: string) => path.replace(/^\/api/, '')
     }
   }
 

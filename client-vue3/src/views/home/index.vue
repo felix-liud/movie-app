@@ -4,13 +4,13 @@
  * @Description: 头部组件
  * @FilePath: \movie-app\client-vue3\src\views\home\index.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-04 18:07:12
+ * @LastEditTime: 2020-12-08 14:49:52
 -->
 <template>
   <div class="main">
     <my-header/>
     <router-view v-slot="{ Component }">
-      <transition name="slide-fade">
+      <transition name="fade-transform" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>
@@ -41,16 +41,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-
-.slide-fade-enter-active {
-  transition: all .3s ease;
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .3s;
 }
-.slide-fade-leave-active {
-  transition: all .3s ease;
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active for below version 2.1.8 */ {
-  transform: translateX(100vw);
+.fade-transform-enter {
   opacity: 0;
+  transform: translateX(-100vw);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(100vw);
 }
 </style>

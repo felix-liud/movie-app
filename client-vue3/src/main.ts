@@ -5,15 +5,15 @@
  * @Description: 必要描述
  * @FilePath: \movie-app\client-vue3\src\main.ts
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-30 17:41:40
+ * @LastEditTime: 2020-12-31 15:30:36
  */
 import { createApp } from 'vue'
-import App from './App'
+import App from './App.vue'
 import '/@/assets/style/reset.scss';
 import router from './router';
 import store from './store';
 const app = createApp(App)
-app.config.globalProperties.replaceUrl = (url: string): string => `https://images.weserv.nl/?url=${url}`;
+
   app.use(router)
   .use(store)
   .mount('#app')

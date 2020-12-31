@@ -4,14 +4,14 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\src\components\common\ColumnList.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-30 18:01:41
+ * @LastEditTime: 2020-12-31 15:31:02
 -->
 <template>
   <div class="wrap">
     <router-link :to="`/movie/${item.id}`" class="item" v-for="item in list" :key="item.id">
       <div>
         <div class="img-wrap">
-          <img :src="replaceUrl(item.poster)" :alt="item.title">
+          <img :src="item.poster" :alt="item.title">
         </div>
         <span class="rate">{{ item.rate }}</span>
         <p>{{item.title}}</p>
@@ -22,7 +22,7 @@
 </template>
   
 <script lang='ts'>
-import { ComponentInternalInstance, defineComponent, getCurrentInstance, PropType, reactive } from 'vue';
+import { ComponentInternalInstance, defineComponent, PropType, reactive } from 'vue';
 import { MovieListItem } from '../../store/modules/recommend';
 export default defineComponent({
   props: {
@@ -33,10 +33,7 @@ export default defineComponent({
   },
   name: 'ColumnList',
   setup() {
-    const { ctx }: ComponentInternalInstance = getCurrentInstance();
-    return {
-      replaceUrl: ctx.replaceUrl
-    };
+    return {};
   }
 });
 </script>

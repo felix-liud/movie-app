@@ -4,7 +4,7 @@
  * @Description: aixos
  * @FilePath: \movie-app\client-vue3\src\utils\request.ts
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-30 16:47:22
+ * @LastEditTime: 2020-12-31 14:59:31
  */
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosInstance } from "axios";
 import { reactive, UnwrapRef, onMounted, toRefs } from 'vue';
@@ -60,21 +60,20 @@ export function useRequest <T> (config: AxiosRequestConfig) {
     error: '',
     data: null
   })
-  onMounted(() => {
-    request<T>({
-      ...config
+  request({
+    ...config
+  })
+    .then(res => {
+      state.data = res as UnwrapRef<T>;
+      console.log('data: ', res);
     })
-      .then(res => {
-        state.data = res as UnwrapRef<T>;
-      })
-      .catch(error => {
-        state.data = null;
-        state.error = error;
-      })
-      .finally(() => {
-        state.loading = false;
-      });
-  });
+    .catch(error => {
+      state.data = null;
+      state.error = error;
+    })
+    .finally(() => {
+      state.loading = false;
+    });
   return {
     ...toRefs(state)
   }

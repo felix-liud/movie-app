@@ -141,3 +141,16 @@ table {
 #app {
   font-size: 16px;
 }
+
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .3s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-100vw);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(100vw);
+}

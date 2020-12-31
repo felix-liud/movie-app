@@ -4,7 +4,7 @@
  * @Description: 推荐/首页
  * @FilePath: \movie-app\client-vue3\src\views\home\recommend\index.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-31 08:57:18
+ * @LastEditTime: 2020-12-31 11:16:51
 -->
 <template>
   <div class="main">

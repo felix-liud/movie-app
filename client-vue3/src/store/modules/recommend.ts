@@ -4,9 +4,9 @@
  * @Description: recommend.ts
  * @FilePath: \movie-app\client-vue3\src\store\modules\recommend.ts
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-30 16:53:36
+ * @LastEditTime: 2020-12-31 15:41:36
  */
-import { Store } from 'vuex';
+import { ActionContext } from 'vuex';
 import request from '/@/utils/request';
 export interface CastType {
   avatar: string;
@@ -23,7 +23,7 @@ export interface MovieListItem {
   duration: string;
   id: number;
   isPlay: "0" | "1";
-  movieTypes: [];
+  movieTypes: MovieType[];
   poster: string;
   pubdate: string;
   rate: string;
@@ -45,7 +45,6 @@ export interface HotModel {
   comming: MovieObjType;
   playing: MovieObjType
 };
-
 export default {
   namespaced: true,
   state: {
@@ -68,7 +67,7 @@ export default {
   },
   actions: {
     // 获取热映电影列表
-    async requestHostList({ commit }: Store<StateType>) {
+    async requestHostList({ commit }: ActionContext<StateType, unknown>) {
       const res: HotModel = await request.get('/movie/hot');
       commit('SET_HOT_LIST', res.playing);
       commit('SET_COMING_SOON_LIST', res.comming);

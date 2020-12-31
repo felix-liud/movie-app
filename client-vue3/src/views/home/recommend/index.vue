@@ -4,7 +4,7 @@
  * @Description: 推荐/首页
  * @FilePath: \movie-app\client-vue3\src\views\home\recommend\index.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-30 18:00:51
+ * @LastEditTime: 2020-12-31 08:57:18
 -->
 <template>
   <div class="main">
@@ -58,6 +58,7 @@ export default defineComponent({
   color: $color-theme;
   .more {
     width: 20px;
+    font-weight: bold;
   }
 }
 </style>

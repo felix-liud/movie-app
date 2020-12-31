@@ -4,10 +4,10 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\src\components\common\MovieItem.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-31 15:59:00
+ * @LastEditTime: 2020-12-31 16:18:27
 -->
 <template>
-  <div class="wrap">
+  <div class="movie-wrap-list">
     <router-link :to="`/movie/${item.id}`" class="item" v-for="item in list" :key="item.id">
       <div class="movie-wrap">
         <div class="img-wrap">
@@ -42,7 +42,7 @@ export default defineComponent({
 </script>
 
 <style lang='scss' scope>
-.wrap {
+.movie-wrap-list {
   padding: 0 10px;
   .movie-wrap {
     color: $color-text-primary;

@@ -5,11 +5,11 @@
  * @Description: loading加载组件
  * @FilePath: \movie-app\client-vue3\src\views\movie-detail\index.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-31 16:00:37
+ * @LastEditTime: 2020-12-31 16:45:37
 -->
 <template>
-  <div class="detail-wrap" v-if="!loading">
-    <d-player :url="movie.video" :pic="movie.cover"/>
+  <div class="detail-wrap" v-if="!loading && movie">
+    <d-player :key="movie.video" :url="movie.video" :pic="movie.cover"/>
     <div class="movie">
       <div class="top">
         <h3 class="title">{{ movie.title }}</h3>
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, toRefs } from 'vue';
+import { computed, defineComponent, ref, toRefs, watch } from 'vue';
 import { useRoute } from "vue-router";
 import DPlayer from "../../components/common/DPlayer.vue";
 import { MovieListItem } from "../../store/modules/recommend";
@@ -58,10 +58,16 @@ export default defineComponent({
       video: '',
       viewCount: 0,
     });
-    const { loading, error, data } = useRequest<MovieDetail>({
-      url: `movie/${id}`
+    const { loading, error, data, fetch } = useRequest<MovieDetail>({
+      url: `movie/${route.params.id}`
     });
-    
+    watch(() => route.params.id, () => {
+      fetch(
+        {
+          url: `movie/${route.params.id}`
+        }
+      );
+    });
     return {
       loading,
       movie: computed(() => data.value?.movie),

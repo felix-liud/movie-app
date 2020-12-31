@@ -4,7 +4,7 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\src\components\common\DPlayer.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-31 14:54:06
+ * @LastEditTime: 2020-12-31 16:44:18
 -->
 <template>
   <div ref="player" class="player">
@@ -13,7 +13,7 @@
 </template>
   
 <script lang='ts'>
-import { defineComponent, onMounted, reactive, ref } from 'vue';
+import { defineComponent, onMounted, reactive, ref, watch } from 'vue';
 import DPlayer from 'dplayer';
 import 'vue-dplayer/dist/vue-dplayer.css';
 
@@ -69,9 +69,13 @@ export default defineComponent({
       }
     }
 
+    const initPlayer = () => {
+      const options = getOptions(player.value, {url, pic});
+      return new DPlayer(options);
+    };
+
     onMounted(() => {
-      const options = getOptions(player.value, {url, pic})
-      const dp = new DPlayer(options);
+      const dp = initPlayer();
       dp.on('play', (e) => {
         setTimeout(() => {
           hiddenControls();
@@ -80,6 +84,8 @@ export default defineComponent({
       dp.on('ended', (e) => {
         showControls();
       });
+
+      
     });
     return {
       player

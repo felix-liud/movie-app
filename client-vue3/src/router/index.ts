@@ -5,7 +5,7 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\src\router\index.ts
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-31 08:58:57
+ * @LastEditTime: 2020-12-31 16:54:32
  */
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 
@@ -53,6 +53,14 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    return {
+      el: '#app',
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    }
+  }
 });
 
 export default router;

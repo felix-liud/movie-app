@@ -4,10 +4,10 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\src\App.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-31 16:04:25
+ * @LastEditTime: 2020-12-31 16:18:16
 -->
 <template>
-  <RouterView v-slot="{ Component }" :key="route.fullPath">
+  <RouterView v-slot="{ Component }">
     <transition name="fade-transform" mode="out-in">
       <component :is="Component" />
     </transition>
@@ -16,15 +16,12 @@
 <script>
 
 import { defineComponent } from 'vue';
-import { RouterView, useRoute } from 'vue-router';
+import { RouterView } from 'vue-router';
 
 export default defineComponent({
   name: 'App',
   setup() {
-    const route = useRoute();
-    console.log('route: ', route);
     return {
-      route
     };
   }
 });

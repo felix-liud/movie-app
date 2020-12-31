@@ -4,7 +4,7 @@
  * @Description: 文件描述
  * @FilePath: \movie-app\client-vue3\src\components\common\ColumnList.vue
  * @LastEditors: liudong
- * @LastEditTime: 2020-12-31 15:31:02
+ * @LastEditTime: 2020-12-31 16:14:20
 -->
 <template>
   <div class="wrap">
